@@ -1,0 +1,18 @@
+# Ignore virtual environment directory
+.venv/
+
+# Ignore JetBrains IDE project files
+.idea/
+
+# Ignore Visual Studio Code project files
+.vscode/
+
+# Ignore local readme file
+Readme_Local.md
+
+# Ignore python cache
+__pycache__/
+Code/Event/__pycache__
+
+# Ignore log
+log/
