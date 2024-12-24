@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Steam Games List</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='CSS/MainWindow.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Steam Games List</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Game Name</th>
+            <th>Playtime (minutes)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for game in games %}
+          <tr>
+            <td>{{ game['name'] }}</td>
+            <td>{{ game['playtime_forever'] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

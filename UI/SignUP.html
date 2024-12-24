@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Steam Api</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='CSS/SignUP.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='CSS/Button.css') }}"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="login-wrapper">
+        <div class="header">STEAM API</div>
+        <div class="form-wrapper">
+          <form id="apiForm">
+            <input
+              type="text"
+              id="user_id"
+              name="user_id"
+              placeholder="YOUR STEAM ID"
+              class="input-item"
+              value="{{ user_id }}"
+            />
+            <input
+              type="text"
+              id="api_key"
+              name="api_key"
+              placeholder="YOUR STEAM API KEY"
+              class="input-item"
+              value="{{ api_key }}"
+            />
+            <button type="submit" class="custom-button">START</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='JS/SignUP.js') }}"></script>
+  </body>
+</html>

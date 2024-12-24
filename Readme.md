@@ -1,0 +1,2 @@
+# PlayRecoder
+用来记录Steam游戏时间的python工具
