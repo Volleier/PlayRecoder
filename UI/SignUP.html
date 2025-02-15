@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Steam Api</title>
-    <link rel="stylesheet" href="CSS/SignUP.css">
-    <link rel="stylesheet" href="CSS/Button.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/SignUP.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/Button.css') }}">
 </head>
 
 <body>
@@ -14,13 +14,15 @@
         <div class="login-wrapper">
             <div class="header">STEAM API</div>
             <div class="form-wrapper">
-                <input type="text" name="user_id" placeholder="YOUR STEAM ID" class="input-item">
-                <input type="password" name="api_key" placeholder="YOUR STEAM API KEY" class="input-item">
-                <button class="custom-button" >START</button>
+                <form id="apiForm">
+                    <input type="text" id="user_id" name="user_id" placeholder="YOUR STEAM ID" class="input-item">
+                    <input type="password" id="api_key" name="api_key" placeholder="YOUR STEAM API KEY" class="input-item">
+                    <button type="submit" class="custom-button">START</button>
+                </form>
             </div>
         </div>
     </div>
-    <script src="JS/SignUP.js"></script>
+    <script src="{{ url_for('static', filename='JS/SignUP.js') }}"></script>
 </body>
 
 </html>

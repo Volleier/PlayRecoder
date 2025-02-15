@@ -13,9 +13,11 @@ document.getElementById('apiForm').addEventListener('submit', function(event) {
     })
     .then(response => response.json())
     .then(data => {
-        if (response.ok) {
+        if (data.message) {
             alert(data.message);
-            window.location.href = '/games';
+            if (response.ok) {
+                window.location.href = '/games';
+            }
         } else {
             alert(data.message);
         }
