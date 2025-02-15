@@ -1,6 +1,10 @@
 from .Logger import logger
 from .ReadConfig import read_config
 from .SteamDataFetcher import get_owned_games
+from .CalculateTime import calculate_game_statistics, plot_game_statistics
+import requests
+import configparser
+import os
 
 
 class SteamFacade:
@@ -10,8 +14,7 @@ class SteamFacade:
         self.get_owned_games = get_owned_games
 
     def validate_steam_credentials(self, api_key, user_id):
-        url = f"http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={
-            api_key}&steamid={user_id}&format=json"
+        url = f"http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key={api_key}&steamid={user_id}&format=json"
         response = requests.get(url)
         return response.status_code == 200
 
@@ -33,8 +36,12 @@ class SteamFacade:
         try:
             self.logger.info("开始获取游戏列表")
             games = self.get_owned_games(api_key, user_id)
-            self.logger.info(f"获取到的游戏列表: {games}")
-            return games
+            # self.logger.info(f"获取到的游戏列表: {games}")
+
+            significant_games = calculate_game_statistics(games)
+            plot_path = plot_game_statistics(significant_games)
+
+            return games, plot_path
         except Exception as e:
             self.logger.error(f"获取游戏列表失败: {e}")
             raise e

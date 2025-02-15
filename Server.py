@@ -4,6 +4,10 @@ from threading import Timer
 import os
 import configparser
 from Core.Event.Facade import steam_facade
+import logging
+
+# 配置日志记录
+logging.basicConfig(level=logging.DEBUG)
 
 
 class Server:
@@ -50,6 +54,19 @@ class Server:
                 games = steam_facade.fetch_owned_games()
                 return render_template('games.html', games=games)
             except Exception as e:
+                return jsonify({"error": str(e)}), 500
+
+        @app.route('/dashboard')
+        def dashboard():
+            try:
+                logging.info("开始获取游戏列表")
+                games = steam_facade.fetch_owned_games()
+                logging.info(f"获取到的游戏数量: {len(games)}")
+                name = "User"  # 确保这里有一个默认的用户名
+                logging.info(f"User name: {name}")
+                return render_template('Dashboard.html', games=games, name=name)
+            except Exception as e:
+                logging.error(f"获取游戏列表失败: {str(e)}")
                 return jsonify({"error": str(e)}), 500
 
         def open_browser():
