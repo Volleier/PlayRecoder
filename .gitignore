@@ -10,9 +10,8 @@
 # Ignore local readme file
 Readme_Local.md
 
-# Ignore python cache
-__pycache__/
-Code/Event/__pycache__
-
 # Ignore log
 log/
+
+# Ignore node_modules
+node_modules
